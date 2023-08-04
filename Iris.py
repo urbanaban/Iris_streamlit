@@ -34,23 +34,38 @@ petalValue = st.sidebar.slider('petal length(cm)',min_value=0.0, max_value=10.0,
 st.title('Iris Classifier')
 st.write('## Input value')
 
-#インプットデータ（1行のデータフレーム）
+# #インプットデータ（1行のデータフレーム）
 # value_df = pd.DataFrame([],columns=['data','sepal length (cm)','petal length (cm)'])
 # record = pd.Series(['data',sepalValue, petalValue], index=value_df.columns)
 # value_df = value_df.append(record, ignore_index=True)
 # value_df.set_index('data',inplace=True)
 
-# データを辞書形式で作成
+# data = ['data']
+# # データをシリーズとして作成
+# sepal_series = pd.Series([sepalValue], index=['sepal length (cm)'])
+# petal_series = pd.Series([petalValue], index=['petal length (cm)'])
+
+# # シリーズをリストにまとめて連結
+# series_list = [pd.Series(data, index=['data']), sepal_series, petal_series]
+
+# # リスト内のシリーズを列方向に連結
+# value_df = pd.concat(series_list, axis=1)
+
+# # 'data'列をインデックスに設定
+# value_df.set_index('data', inplace=True)
+
 data_dict = {
-    'sepal length (cm)': [sepalValue],
-    'petal length (cm)': [petalValue]
+    'data': ['data'],
+    'sepal length (cm)': sepalValue,
+    'petal length (cm)': petalValue
 }
 
-# 辞書からデータフレームを作成
+# 辞書を使って新しい行を追加
 value_df = pd.DataFrame(data_dict)
 
 # 'data'列をインデックスに設定
 value_df.set_index('data', inplace=True)
+
 
 #入力値の値
 st.write(value_df)
