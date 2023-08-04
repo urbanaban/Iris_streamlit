@@ -40,7 +40,6 @@ st.write('## Input value')
 # value_df = value_df.append(record, ignore_index=True)
 # value_df.set_index('data',inplace=True)
 
-
 # データを辞書形式で作成
 data_dict = {
     'sepal length (cm)': [sepalValue],
